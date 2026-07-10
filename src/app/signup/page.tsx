@@ -19,6 +19,7 @@ import type { Selection } from "@heroui/react";
 import Link from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { LiaFacebookF } from "react-icons/lia";
 import { redirect } from "next/navigation";
 
 interface SignUpFormData {
@@ -210,7 +211,7 @@ const onSubmit = async (
 
               <Button
                 type="submit"
-                className="mt-6 w-full bg-cyan-700 rounded-lg"
+                className="mt-6 w-full  rounded-lg"
                 isDisabled={loading}
               >
                 {loading
@@ -242,8 +243,8 @@ const onSubmit = async (
             onPress={handleGoogleSignin}
             variant="outline"
             className="w-full rounded-lg"
-          >
-            <FcGoogle className="mr-2 text-xl" />
+          >            
+           <LiaFacebookF className="mr-2 text-xl" />
             Sign up with Facebook
           </Button>
         </div>

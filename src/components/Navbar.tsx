@@ -34,7 +34,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="w-full border-b bg-white shadow-sm">
+    <header className="border-b border-gray-200 sticky top-0 bg-white z-50 w-full  shadow-sm">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">

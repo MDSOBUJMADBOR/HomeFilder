@@ -6,7 +6,7 @@ import { HiChevronLeft, HiChevronRight, HiMagnifyingGlass } from "react-icons/hi
 const Banner = () => {
   return (
     <section className="max-w-7xl mx-auto relative overflow-hidden bg-gradient-to-r from-slate-50 to-blue-100">
-      <div className="mx-auto grid min-h-[650px] max-w-7xl items-center gap-10 px-6 py-10 lg:grid-cols-2">
+      <div className="mx-auto grid min-h-[600px] max-w-7xl items-center gap-10 pl-6 pt-10 lg:grid-cols-2">
         {/* Left Content */}
         <div className="z-10">
           <h1 className="text-5xl font-extrabold leading-tight text-slate-900 lg:text-7xl">
@@ -37,7 +37,7 @@ const Banner = () => {
           </div>
 
           <p className="mt-5 text-sm text-gray-500">
-            Trusted by 10,000+ happy customers
+            Trusted by 10,000+ happy customers 
           </p>
         </div>
 
@@ -48,7 +48,7 @@ const Banner = () => {
             alt="Luxury House"
             fill
             priority
-            className="rounded-2xl object-cover"
+            className="object-cover"
           />
         </div>
       </div>

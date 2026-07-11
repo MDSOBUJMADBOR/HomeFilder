@@ -40,8 +40,11 @@ const { data: session } = useSession();
 
   const userData = authClient.useSession();  
 const user = userData.data?.user;  
-console.log(user?.name,'user');
+// console.log(user?.name,'user');
 
+if(pathname.includes('/dashboard')){
+  return null; 
+}
 
 
 const handleSignOut = async () => {
@@ -98,20 +101,20 @@ const handleSignOut = async () => {
       </span>
 
       <Link href={`/dashboard/${role}/overview`}>
-        <button className="rounded-md bg-green-600 px-5 py-2 text-white hover:bg-green-700">
+        <button className="rounded-md bg-green-600 px-5 py-2 text-white hover:bg-green-700 cursor-pointer">
           Dashboard
         </button>
       </Link>
 
-      <Link href="/profile">
-        <button className="rounded-md border border-blue-600 px-5 py-2 text-blue-600 hover:bg-blue-50">
+      {/* <Link href="/profile">
+        <button className="rounded-md border border-blue-600 px-5 py-2 text-blue-600 hover:bg-blue-50 cursor-pointer">
           Profile
         </button>
-      </Link>
+      </Link> */}
 
       <button
         onClick={handleSignOut}
-        className="rounded-md bg-red-600 px-5 py-2 text-white hover:bg-red-700"
+        className="rounded-md bg-red-600 px-5 py-2 text-white hover:bg-red-700 cursor-pointer"
       >
         Logout
       </button>
@@ -119,13 +122,13 @@ const handleSignOut = async () => {
   ) : (
     <>
       <Link href="/signin">
-        <button className="rounded-md bg-blue-600 px-6 py-2 text-white hover:bg-blue-700">
+        <button className="rounded-md bg-blue-600 px-6 py-2 text-white hover:bg-blue-700 cursor-pointer">
           Login
         </button>
       </Link>
 
       <Link href="/signup">
-        <button className="rounded-md bg-blue-600 px-6 py-2 text-white hover:bg-blue-700">
+        <button className="rounded-md bg-blue-600 px-6 py-2 text-white hover:bg-blue-700 cursor-pointer">
           Register
         </button>
       </Link>
@@ -184,20 +187,20 @@ const handleSignOut = async () => {
       href={`/dashboard/${role}/overview`}
       onClick={() => setOpen(false)}
     >
-      <button className="w-full rounded-md bg-green-600 py-2 text-white">
+      <button className="w-full rounded-md bg-green-600 py-2 text-white cursor-pointer">
         Dashboard
       </button>
     </Link>
 
-    <Link href="/profile" onClick={() => setOpen(false)}>
-      <button className="w-full rounded-md border border-blue-600 py-2 text-blue-600">
+    {/* <Link href="/profile" onClick={() => setOpen(false)}>
+      <button className="w-full rounded-md border border-blue-600 py-2 text-blue-600 cursor-pointer">
         Profile
       </button>
-    </Link>
+    </Link> */}
 
     <button
       onClick={handleSignOut}
-      className="w-full rounded-md bg-red-600 py-2 text-white"
+      className="w-full rounded-md bg-red-600 py-2 text-white cursor-pointer"
     >
       Logout
     </button>
@@ -205,13 +208,13 @@ const handleSignOut = async () => {
 ) : (
   <div className="mt-4 flex flex-col gap-3">
     <Link href="/signin">
-      <button className="w-full rounded-md bg-blue-600 py-2 text-white">
+      <button className="w-full rounded-md bg-blue-600 py-2 text-white cursor-pointer">
         Login
       </button>
     </Link>
 
     <Link href="/signup">
-      <button className="w-full rounded-md bg-blue-600 py-2 text-white">
+      <button className="w-full rounded-md bg-blue-600 py-2 text-white cursor-pointer">
         Register
       </button>
     </Link>

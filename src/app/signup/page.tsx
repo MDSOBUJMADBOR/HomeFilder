@@ -1,6 +1,5 @@
 "use client";
 
-// import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -20,7 +19,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { LiaFacebookF } from "react-icons/lia";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
 interface SignUpFormData {
   name: string;  
@@ -28,69 +28,33 @@ interface SignUpFormData {
   password: string; 
 }
 
-// type UserRole = "user" | "librarian";
+
 
 export default function SignUpPage() {
   const [loading, setLoading] = useState<boolean>(false);
 
-  const [role, setRole] = useState<Selection>(
-    new Set(["user"])
-  );
 
-//   const onSubmit = async (
-//     e: React.FormEvent<HTMLFormElement>
-//   ): Promise<void> => {
-//     e.preventDefault();
 
-//     setLoading(true);
-
-//     try {
-//       const formData = new FormData(e.currentTarget);
-
-//       const user = Object.fromEntries(
-//         formData.entries()
-//       ) as unknown as SignUpFormData;
-
-      
-
-//     //   const selectedRole = Array.from(role)[0] as UserRole;
-
-//    await authClient.signUp.email({
-//   ...user,
-//   role: "user",
-//   plan: "free",
-// });
-
-//       redirect("/");
-//     } catch (error) {
-//       console.error(error);
-//       alert("Registration failed");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
+const router = useRouter();
 
 const onSubmit = async (
   e: React.FormEvent<HTMLFormElement>
 ): Promise<void> => {
   e.preventDefault();
-
   setLoading(true);
 
   try {
     const formData = new FormData(e.currentTarget);
 
-    const user = Object.fromEntries(
-      formData.entries()
-    ) as SignUpFormData;
+    const user: SignUpFormData = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      password: formData.get("password") as string,
+    };
 
-    await authClient.signUp.email({
-      ...user,
-      role: "user",
-      plan: "free",
-    });
+    await authClient.signUp.email(user);
 
-    redirect("/");
+    router.push("/");
   } catch (error) {
     console.error(error);
     alert("Registration failed");
@@ -98,16 +62,18 @@ const onSubmit = async (
     setLoading(false);
   }
 };
-  const handleGoogleSignin = async (): Promise<void> => {
-    try {
-      await authClient.signIn.social({
-        provider: "google",
-      });
 
-      redirect("/");
-    } catch (error) {
-      console.error(error);
-    }
+
+  const handleGoogleSignin = async (): Promise<void> => {
+    // try {
+    //   await authClient.signIn.social({
+    //     provider: "google",
+    //   });
+
+    //   redirect("/");
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
   return (
@@ -199,14 +165,14 @@ const onSubmit = async (
                     </ListBox>
                   </Select.Popover>
                 </Select> */}
-                <Select
+                {/* <Select
   name="role"
   selectedKeys={role}
   onSelectionChange={setRole}
   placeholder="Select Role"
 >
   ...
-</Select>
+</Select> */}
               </Fieldset.Group>
 
               <Button

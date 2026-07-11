@@ -21,74 +21,68 @@ import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { LiaFacebookF } from "react-icons/lia";
 import { redirect } from "next/navigation";
+import { router } from "better-auth/api";
+import { authClient } from "@/lib/auth-client";
 
 interface SignInFormData {
   email: string;
   password: string; 
 }
 
-// type UserRole = "user" | "librarian";
+
 
 export default function SignInPage() {
   const [loading, setLoading] = useState<boolean>(false);
 
-//   const [role, setRole] = useState<Selection>(
-//     new Set(["user"])
-//   );
 
-//   const onSubmit = async (
-//     e: React.FormEvent<HTMLFormElement>
-//   ): Promise<void> => {
-//     e.preventDefault();
+// const onSubmit = async (
+//   e: React.FormEvent<HTMLFormElement>
+// ): Promise<void> => {
+//   e.preventDefault();
+//   setLoading(true);
 
-//     setLoading(true);
+//   try {
+//     const formData = new FormData(e.currentTarget);
 
-//     try {
-//       const formData = new FormData(e.currentTarget);
+//     const user: SignInFormData = {
+//       email: formData.get("email") as string,
+//       password: formData.get("password") as string,
+//     };
 
-//       const user = Object.fromEntries(
-//         formData.entries()
-//       ) as unknown as SignUpFormData;
+//     await authClient.signIn.email(user);
 
-      
+//     callbackURL: "/"
+//   } catch (error) {
+//     console.error(error);
+//     alert("Sign-in failed");
+//   } finally {
+//     setLoading(false);
+//   }
+// };
 
-//     //   const selectedRole = Array.from(role)[0] as UserRole;
 
-//    await authClient.signUp.email({
-//   ...user,
-//   role: "user",
-//   plan: "free",
-// });
-
-//       redirect("/");
-//     } catch (error) {
-//       console.error(error);
-//       alert("Registration failed");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
 
 const onSubmit = async (
   e: React.FormEvent<HTMLFormElement>
 ): Promise<void> => {
   e.preventDefault();
-
   setLoading(true);
 
   try {
     const formData = new FormData(e.currentTarget);
 
-    const user = Object.fromEntries(
-      formData.entries()
-    ) as SignInFormData;
+    const user: SignInFormData = {
+      email: formData.get("email") as string,
+      password: formData.get("password") as string,
+    };
 
     await authClient.signIn.email({
-      ...user,
-     
+      email: user.email,
+      password: user.password,
+      callbackURL: "/",
     });
 
-    redirect("/");
+    alert("Sign-in successful");
   } catch (error) {
     console.error(error);
     alert("Sign-in failed");
@@ -96,17 +90,16 @@ const onSubmit = async (
     setLoading(false);
   }
 };
-  const handleGoogleSignin = async (): Promise<void> => {
-    try {
-      await authClient.signIn.social({
-        provider: "google",
-      });
-
-      redirect("/");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+const handleGoogleSignin = async () => {
+  try {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <div className="min-h-screen  flex items-center justify-center px-4">

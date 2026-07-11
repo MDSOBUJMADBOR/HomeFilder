@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { HiHome } from "react-icons/hi2";
 import { HiMenu, HiX } from "react-icons/hi";
 import { useState } from "react";
+import { authClient, useSession } from "@/lib/auth-client";
 
 const navLinks = [
   {
@@ -30,8 +31,24 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false); 
   const pathname = usePathname();
+
+const { data: session } = useSession(); 
+  const role = session?.user?.role;
+// console.log(role,'role');
+
+  const userData = authClient.useSession();  
+const user = userData.data?.user;  
+console.log(user?.name,'user');
+
+
+
+const handleSignOut = async () => {
+  await authClient.signOut();
+};
+
+
 
   return (
     <header className="border-b border-gray-200 sticky top-0 bg-white z-50 w-full  shadow-sm">
@@ -69,20 +86,60 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        {/* Buttons */}
-        <div className="hidden items-center gap-4 md:flex">
-         <Link href="/signin">
-            <button className="rounded-md bg-blue-600 px-6 py-2 text-sm font-medium text-white transition hover:bg-blue-700">
-              Login
-            </button>
-          </Link>
 
-          <Link href="/signup">
-            <button className="rounded-md bg-blue-600 px-6 py-2 text-sm font-medium text-white transition hover:bg-blue-700">
-              Register
-            </button>
-          </Link>
-        </div>
+
+
+        {/* Buttons */}
+       <div className="hidden items-center gap-4 md:flex">
+  {user ? (
+    <>
+      <span className="font-medium text-gray-700">
+        Hi, {user.name}
+      </span>
+
+      <Link href={`/dashboard/${role}/overview`}>
+        <button className="rounded-md bg-green-600 px-5 py-2 text-white hover:bg-green-700">
+          Dashboard
+        </button>
+      </Link>
+
+      <Link href="/profile">
+        <button className="rounded-md border border-blue-600 px-5 py-2 text-blue-600 hover:bg-blue-50">
+          Profile
+        </button>
+      </Link>
+
+      <button
+        onClick={handleSignOut}
+        className="rounded-md bg-red-600 px-5 py-2 text-white hover:bg-red-700"
+      >
+        Logout
+      </button>
+    </>
+  ) : (
+    <>
+      <Link href="/signin">
+        <button className="rounded-md bg-blue-600 px-6 py-2 text-white hover:bg-blue-700">
+          Login
+        </button>
+      </Link>
+
+      <Link href="/signup">
+        <button className="rounded-md bg-blue-600 px-6 py-2 text-white hover:bg-blue-700">
+          Register
+        </button>
+      </Link>
+    </>
+  )}
+</div>
+
+
+
+
+
+
+
+
 
         {/* Mobile Button */}
         <button
@@ -116,19 +173,53 @@ export default function Navbar() {
               );
             })}
 
-        <div className="flex flex-col gap-3 mt-4">
-             <Link href="/signin">
-              <button className="w-full rounded-md bg-blue-600 py-2 text-white">
-                Login
-              </button>
-            </Link>
+       {user ? (
+  <div className="mt-4 flex flex-col gap-3">
+    <div className="rounded-md bg-gray-100 p-3">
+      <p className="font-semibold">{user.name}</p>
+      <p className="text-sm text-gray-500">{user.email}</p>
+    </div>
 
-            <Link href="/signup">
-              <button className="w-full rounded-md bg-blue-600 py-2 text-white">
-                Register
-              </button>
-            </Link>
-        </div>
+    <Link
+      href={`/dashboard/${role}/overview`}
+      onClick={() => setOpen(false)}
+    >
+      <button className="w-full rounded-md bg-green-600 py-2 text-white">
+        Dashboard
+      </button>
+    </Link>
+
+    <Link href="/profile" onClick={() => setOpen(false)}>
+      <button className="w-full rounded-md border border-blue-600 py-2 text-blue-600">
+        Profile
+      </button>
+    </Link>
+
+    <button
+      onClick={handleSignOut}
+      className="w-full rounded-md bg-red-600 py-2 text-white"
+    >
+      Logout
+    </button>
+  </div>
+) : (
+  <div className="mt-4 flex flex-col gap-3">
+    <Link href="/signin">
+      <button className="w-full rounded-md bg-blue-600 py-2 text-white">
+        Login
+      </button>
+    </Link>
+
+    <Link href="/signup">
+      <button className="w-full rounded-md bg-blue-600 py-2 text-white">
+        Register
+      </button>
+    </Link>
+  </div>
+)}
+
+
+
           </div>
         </div>
       )}

@@ -33,16 +33,16 @@ export default function DashboardSidebar() {
         href: "/dashboard/user/overview",
       },
       {
-        key: "delivery-history",
-        label: "Delivery History",
-        icon: House,
-        href: "/dashboard/user/deliveryhistory",
-      },
-      {
-        key: "my-reading-list",
-        label: "My Reading List",
+        key: "add-property",
+        label: "Add Property",
         icon: Plus,
-        href: "/dashboard/user/myreadinglist",
+        href: "/dashboard/user/addproperty",
+      },     
+      {
+        key: "my-properties",
+        label: "My Properties",
+        icon: Calendar,
+        href: "/dashboard/user/myproperties",
       },
       {
         key: "my-reviews",
@@ -51,33 +51,7 @@ export default function DashboardSidebar() {
         href: "/dashboard/user/myreviews",
       },
     ],
-
-    librarian: [
-      {
-        key: "overview",
-        label: "Overview",
-        icon: Circle,
-        href: "/dashboard/librarian/overview", 
-      },
-      {
-        key: "add-book",
-        label: "Add Book",
-        icon: Circle,
-        href: "/dashboard/librarian/addbook",
-      },
-      {
-        key: "manage-inventory",
-        label: "Manage Inventory",
-        icon: Circle,
-        href: "/dashboard/librarian/manageinventory",
-      },
-      {
-        key: "manage-deliveries",
-        label: "Manage Deliveries",
-        icon: Circle,
-        href: "/dashboard/librarian/managedeliveries",
-      },
-    ],
+   
 
     admin: [
       {
@@ -87,23 +61,18 @@ export default function DashboardSidebar() {
         href: "/dashboard/admin/overview",
       },
       {
-        key: "manage-all-books",
-        label: "Manage All Books",
-        icon: Circle,
-        href: "/dashboard/admin/manageallbooks",
-      },
-      {
         key: "manage-users",
         label: "Manage Users",
-        icon: Circle,
-        href: "/dashboard/admin/manageusers",
-      },      
-      {
-        key: "view-all-transactions",
-        label: "View All Transactions",
-        icon: Circle,
-        href: "/dashboard/admin/viewalltransactions", 
+        icon: Person,
+        href: "/dashboard/admin/manageuser",
       },
+      {
+        key: "manage-properties",
+        label: "Manage Properties",
+        icon: Circle,
+        href: "/dashboard/admin/manageproperties",
+      },     
+      
     ],
   };
 
@@ -199,7 +168,7 @@ export default function DashboardSidebar() {
 
       {/* Mobile */}
       <Drawer>
-        <Button className="lg:hidden  flex items-center gap-2 rounded">
+        <Button className="lg:hidden py-6  flex items-center gap-2 rounded-none">
           <Bars className="size-5" />
           Menu
         </Button>

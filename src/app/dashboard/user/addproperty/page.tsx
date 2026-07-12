@@ -1,69 +1,83 @@
-'use client'
+"use client";
 
+import React from "react";
 import { authClient } from "@/lib/auth-client";
 
+interface PropertyData {
+  title: string;
+  propertyType: string;
+  location: string;
+  price: number;
+  image: string;
+  shortDescription: string;
+  fullDescription: string;
+  status: "unpublished";
+  createdAt: Date;
+  email?: string;
+  userName?: string;
+  role: string;
+}
+
 const UserAddProperty = () => {
-const userData = authClient.useSession(); 
-  const user = userData.data?.user; 
+  const { data } = authClient.useSession(); 
+  const user = data?.user;
 
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    e.preventDefault();
 
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+    const propertyData: PropertyData = {
+      title: formData.get("title") as string,
+      propertyType: formData.get("propertyType") as string,
+      location: formData.get("location") as string,
+      price: Number(formData.get("price")),
+      image: formData.get("image") as string,
+      shortDescription: formData.get("shortDescription") as string,
+      fullDescription: formData.get("fullDescription") as string,
 
-  const form = e.target;
-  const formData = new FormData(form);
+      status: "unpublished",
+      createdAt: new Date(),
 
-  const propertyData = {
-    title: formData.get("title"),
-    propertyType: formData.get("propertyType"),
-    location: formData.get("location"),
-    price: formData.get("price"),
-    image: formData.get("image"),
-    shortDescription: formData.get("shortDescription"),
-    fullDescription: formData.get("fullDescription"),
+      email: user?.email,
+      userName: user?.name,
+      role: user?.role || "user",
+    };
 
-createdAt: new Date(),
-  email: user?.email,
-  userName: user?.name,
- role: user?.role || "user",
+    console.log(propertyData);
 
-  };
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/housepost`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(propertyData),
+        }
+      );
 
-  console.log(propertyData);
-  
+      const data = await res.json();
 
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/housepost`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-   
-  },
-  body: JSON.stringify(propertyData),
-});
-
-    const data = await res.json();
-
-    if (data.acknowledged) {      
-     alert("Book added successfully ✅");
-
-      // ✅ FORM RESET
-      form.reset();
-     
-    } else {
-      alert("Failed to save ❌");
+      if (data.acknowledged) {
+        alert("Property added successfully ✅");
+        form.reset();
+      } else {
+        alert("Failed to save ❌");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong");
     }
-  } catch (err) {
-    
-    alert("Something went wrong");
-  }
-};
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 px-1">
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-8">
-
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-800">
             Add New Property
@@ -74,21 +88,20 @@ createdAt: new Date(),
           </p>
         </div>
 
-        <form onSubmit={handleSubmit}  className="space-y-3">
-
+        <form onSubmit={handleSubmit} className="space-y-3">
           <div className="grid md:grid-cols-2 gap-6">
-
             <div>
               <label className="font-medium mb-2 block">
                 Property Title
               </label>
 
-             <input
-  type="text"
-  name="title"
-  placeholder="Luxury Family Apartment"
-  className="w-full border rounded-lg p-3 outline-none focus:ring-2 focus:ring-blue-500"
-/>
+              <input
+                type="text"
+                name="title"
+                placeholder="Luxury Family Apartment"
+                className="w-full border rounded-lg p-3 outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
             </div>
 
             <div>
@@ -96,16 +109,17 @@ createdAt: new Date(),
                 Property Type
               </label>
 
-             <select
-  name="propertyType"
-  className="w-full border rounded-lg p-3"
->
-  <option>Apartment</option>
-  <option>House</option>
-  <option>Villa</option>
-  <option>Office</option>
-  <option>Commercial</option>
-</select>
+              <select
+                name="propertyType"
+                className="w-full border rounded-lg p-3"
+                required
+              >
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+                <option value="Villa">Villa</option>
+                <option value="Office">Office</option>
+                <option value="Commercial">Commercial</option>
+              </select>
             </div>
 
             <div>
@@ -113,12 +127,13 @@ createdAt: new Date(),
                 Location
               </label>
 
-             <input
-  type="text"
-  name="location"
-  placeholder="Dhaka, Bangladesh"
-  className="w-full border rounded-lg p-3"
-/>
+              <input
+                type="text"
+                name="location"
+                placeholder="Dhaka, Bangladesh"
+                className="w-full border rounded-lg p-3"
+                required
+              />
             </div>
 
             <div>
@@ -131,56 +146,9 @@ createdAt: new Date(),
                 name="price"
                 placeholder="50000"
                 className="w-full border rounded-lg p-3"
+                required
               />
             </div>
-
-            {/* <div>
-              <label className="font-medium mb-2 block">
-                Bedrooms
-              </label>
-
-              <input
-                type="number"
-                placeholder="3"
-                className="w-full border rounded-lg p-3"
-              />
-            </div>
-
-            <div>
-              <label className="font-medium mb-2 block">
-                Bathrooms
-              </label>
-
-              <input
-                type="number"
-                placeholder="2"
-                className="w-full border rounded-lg p-3"
-              />
-            </div> */}
-
-            {/* <div>
-              <label className="font-medium mb-2 block">
-                Area (sq ft)
-              </label>
-
-              <input
-                type="number"
-                placeholder="1800"
-                className="w-full border rounded-lg p-3"
-              />
-            </div>
-
-            <div>
-              <label className="font-medium mb-2 block">
-                Status
-              </label>
-
-              <select className="w-full border rounded-lg p-3">
-                <option>For Sale</option>
-                <option>For Rent</option>
-              </select>
-            </div> */}
-
           </div>
 
           <div>
@@ -189,10 +157,11 @@ createdAt: new Date(),
             </label>
 
             <input
-              type="text"
+              type="url"
               name="image"
               placeholder="https://example.com/image.jpg"
               className="w-full border rounded-lg p-3"
+              required
             />
           </div>
 
@@ -204,8 +173,9 @@ createdAt: new Date(),
             <textarea
               name="shortDescription"
               rows={2}
-              className="w-full border rounded-lg p-1"
+              className="w-full border rounded-lg p-3"
               placeholder="Write a short description..."
+              required
             />
           </div>
 
@@ -216,14 +186,14 @@ createdAt: new Date(),
 
             <textarea
               name="fullDescription"
-              rows={2}
+              rows={4}
               className="w-full border rounded-lg p-3"
               placeholder="Write complete property details..."
+              required
             />
           </div>
 
           <div className="flex gap-4">
-
             <button
               type="submit"
               className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition"
@@ -237,11 +207,8 @@ createdAt: new Date(),
             >
               Cancel
             </button>
-
           </div>
-
         </form>
-
       </div>
     </div>
   );

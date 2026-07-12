@@ -3,7 +3,7 @@ import DashboardSidebar from "@/components/DashboardSidebar";
 import type { ReactNode } from "react";
 
 
-interface DashboardLayoutProps {
+interface DashboardLayoutProps { 
   children: ReactNode;
 }
 

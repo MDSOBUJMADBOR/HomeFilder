@@ -1,6 +1,11 @@
 'use client'
 
+import { authClient } from "@/lib/auth-client";
+
 const UserAddProperty = () => {
+const userData = authClient.useSession(); 
+  const user = userData.data?.user; 
+
 
 
 const handleSubmit = async (e) => {
@@ -11,19 +16,48 @@ const handleSubmit = async (e) => {
 
   const propertyData = {
     title: formData.get("title"),
-
-    
     propertyType: formData.get("propertyType"),
     location: formData.get("location"),
     price: formData.get("price"),
     image: formData.get("image"),
     shortDescription: formData.get("shortDescription"),
     fullDescription: formData.get("fullDescription"),
+
+createdAt: new Date(),
+  email: user?.email,
+  userName: user?.name,
+ role: user?.role || "user",
+
   };
 
   console.log(propertyData);
   
-   form.reset();
+
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/housepost`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+   
+  },
+  body: JSON.stringify(propertyData),
+});
+
+    const data = await res.json();
+
+    if (data.acknowledged) {      
+     alert("Book added successfully ✅");
+
+      // ✅ FORM RESET
+      form.reset();
+     
+    } else {
+      alert("Failed to save ❌");
+    }
+  } catch (err) {
+    
+    alert("Something went wrong");
+  }
 };
 
   return (

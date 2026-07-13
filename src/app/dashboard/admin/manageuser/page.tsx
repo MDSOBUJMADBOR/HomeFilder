@@ -23,7 +23,7 @@ interface Role {
 
 const ROLES: Role[] = [
   { id: "user", label: "User" },
-  { id: "librarian", label: "Librarian" },
+  // { id: "librarian", label: "Librarian" },
   { id: "admin", label: "Admin" },
 ];
 

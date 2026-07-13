@@ -14,7 +14,7 @@ const navLinks = [
   },
   {
     title: "Explore",
-    href: "/explore",
+    href: "/House",
   },
   {
     title: "About",

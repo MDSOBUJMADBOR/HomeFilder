@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -10,24 +9,47 @@ import {
   Square,
   Star,
 } from "lucide-react";
+import Link from "next/link";
 
-export default function PropertyCard({book}) {
+export interface Property {
+  _id: string;
+  title: string;
+  location: string;
+  price: number;
+  image: string;
+  rating: number;
+  reviews: number;
+  beds: number;
+  baths: number;
+  area: number;
+  status: "For Sale" | "For Rent";
+}
 
-    console.log(book,'book');
+interface PropertyCardProps {
+  book: Property;
+}
+
+export default function PropertyCard({ book }: PropertyCardProps) {
   return (
     <div className="group w-full max-w-[340px] overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       {/* Image */}
       <div className="relative h-56 overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200"
-          alt="Modern Family Villa"
+          src={book.image}
+          alt={book.title}
           fill
           className="object-cover transition duration-500 group-hover:scale-110"
         />
 
         {/* Status */}
-        <span className="absolute left-3 top-3 rounded-md bg-blue-600 px-3 py-1 text-xs font-semibold text-white">
-          For Sale
+        <span
+          className={`absolute left-3 top-3 rounded-md px-3 py-1 text-xs font-semibold text-white ${
+            book.status === "For Sale"
+              ? "bg-blue-600"
+              : "bg-green-600"
+          }`}
+        >
+          {book.status}
         </span>
 
         {/* Wishlist */}
@@ -40,26 +62,30 @@ export default function PropertyCard({book}) {
       <div className="space-y-4 p-5">
         <div>
           <h2 className="text-lg font-bold text-gray-800">
-            Modern Family Villa
+            {book.title}
           </h2>
 
           <div className="mt-2 flex items-center gap-1 text-sm text-gray-500">
             <MapPin size={16} />
-            Banani, Dhaka
+            {book.location}
           </div>
         </div>
 
         {/* Price & Rating */}
         <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-bold text-green-600">$250,000</h3>
+          <h3 className="text-2xl font-bold text-green-600">
+            ${book.price.toLocaleString()}
+          </h3>
 
           <div className="flex items-center gap-1">
             <Star
               size={16}
               className="fill-yellow-400 text-yellow-400"
             />
-            <span className="font-semibold">4.8</span>
-            <span className="text-gray-500">(120)</span>
+            <span className="font-semibold">{book.rating}</span>
+            <span className="text-gray-500">
+              ({book.reviews})
+            </span>
           </div>
         </div>
 
@@ -67,24 +93,26 @@ export default function PropertyCard({book}) {
         <div className="grid grid-cols-3 border-y py-4 text-sm text-gray-600">
           <div className="flex items-center justify-center gap-1">
             <BedDouble size={18} />
-            <span>4 Bed</span>
+            <span>{book.beds} Bed</span>
           </div>
 
           <div className="flex items-center justify-center gap-1">
             <Bath size={18} />
-            <span>3 Bath</span>
+            <span>{book.baths} Bath</span>
           </div>
 
           <div className="flex items-center justify-center gap-1">
             <Square size={18} />
-            <span>2500 sqft</span>
+            <span>{book.area} sqft</span>
           </div>
         </div>
 
         {/* Button */}
-        <button className="w-full rounded-lg bg-blue-600 py-3 cursor-pointer font-semibold text-white transition hover:bg-blue-700">
+       <Link href={`/House/${book._id}`}>
+        <button className="w-full cursor-pointer rounded-lg bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700">
           View Details
         </button>
+       </Link>
       </div>
     </div>
   );

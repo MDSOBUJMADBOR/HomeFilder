@@ -2,6 +2,7 @@
 
 import React from "react";
 import { authClient } from "@/lib/auth-client";
+import {  useRouter } from "next/navigation";
 
 interface PropertyData {
   title: string;
@@ -21,7 +22,7 @@ interface PropertyData {
 const UserAddProperty = () => {
   const { data } = authClient.useSession(); 
   const user = data?.user;
-
+const router = useRouter();
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
@@ -66,6 +67,7 @@ const UserAddProperty = () => {
       if (data.acknowledged) {
         alert("Property added successfully ✅");
         form.reset();
+          router.push("/dashboard/user/myproperties");
       } else {
         alert("Failed to save ❌");
       }

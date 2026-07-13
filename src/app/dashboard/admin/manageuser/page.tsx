@@ -9,85 +9,140 @@ import {
   Chip,
 } from "@heroui/react";
 
-const ROLES = [
+interface User {
+  _id: string;
+  name: string;
+  email: string;
+  role: "user" | "librarian" | "admin";
+}
+
+interface Role {
+  id: User["role"];
+  label: string;
+}
+
+const ROLES: Role[] = [
   { id: "user", label: "User" },
-  { id: "librarian", label: "Librarian" }, 
+  { id: "librarian", label: "Librarian" },
   { id: "admin", label: "Admin" },
 ];
 
 export default function AdminManageUsers() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true); 
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  // ✅ Fetch users
+  // Fetch Users
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/user`)
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchUsers = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user`);
+        const data: User[] = await res.json();
         setUsers(data);
+      } catch (error) {
+        console.error("Failed to fetch users:", error);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchUsers();
   }, []);
 
-  // ✅ Delete
-  const handleDelete = async (id) => {
+  // Delete User
+  const handleDelete = async (id: string): Promise<void> => {
     if (!confirm("Are you sure?")) return;
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/${id}`, {
-      method: "DELETE",
-    });
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/user/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
 
-    const data = await res.json();
+      const data: { deletedCount: number } = await res.json();
 
-    if (data.deletedCount > 0) {
-      setUsers(users.filter((u) => u._id !== id));
+      if (data.deletedCount > 0) {
+        setUsers((prev) => prev.filter((user) => user._id !== id));
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
-  // ✅ Role change — v3 Dropdown.Menu fires onAction with the item's `id`
-  const handleRoleChange = async (id, role) => {
-    console.log(id, role);
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ role }),
-    });
+  // Change Role
+  const handleRoleChange = async (
+    id: string,
+    role: User["role"]
+  ): Promise<void> => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/user/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ role }),
+        }
+      );
 
-    const data = await res.json();
+      const data: { modifiedCount: number } = await res.json();
 
-    if (data.modifiedCount > 0) {
-      setUsers(users.map((u) => (u._id === id ? { ...u, role } : u)));
+      if (data.modifiedCount > 0) {
+        setUsers((prev) =>
+          prev.map((user) =>
+            user._id === id ? { ...user, role } : user
+          )
+        );
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
-  // ✅ Role color
-  const getRoleColor = (role) => {
-    switch (role) {
-      case "admin":
-        return "danger";
-      case "librarian":
-        return "primary";
-      default:
-        return "default";
-    }
-  };
+  // Role Color
+ const getRoleColor = (
+  role: User["role"]
+): "default" | "danger" | "accent" => {
+  switch (role) {
+    case "admin":
+      return "danger";
 
-  // Reusable role dropdown — HeroUI v3 API
-  const RoleDropdown = ({ user }) => (
+    case "librarian":
+      return "accent"; // instead of primary
+
+    default:
+      return "default";
+  }
+};
+
+  interface RoleDropdownProps {
+    user: User;
+  }
+
+  const RoleDropdown = ({ user }: RoleDropdownProps) => (
     <Dropdown>
-      <Button   aria-label="Change role">
-        {ROLES.find((r) => r.id === (user.role || "user"))?.label ?? "User"}
+      <Button aria-label="Change role">
+        {ROLES.find((r) => r.id === user.role)?.label ?? "User"}
       </Button>
+
       <Dropdown.Popover>
         <Dropdown.Menu
           aria-label="Role"
           selectionMode="single"
-          selectedKeys={[user.role || "user"]}
-          onAction={(key) => handleRoleChange(user._id, key)}
+          selectedKeys={[user.role]}
+          onAction={(key) =>
+            handleRoleChange(user._id, key as User["role"])
+          }
         >
-          {ROLES.map((r) => (
-            <Dropdown.Item key={r.id} id={r.id} textValue={r.label}>
-              <Label>{r.label}</Label>
+          {ROLES.map((role) => (
+            <Dropdown.Item
+              key={role.id}
+              id={role.id}
+              textValue={role.label}
+            >
+              <Label>{role.label}</Label>
             </Dropdown.Item>
           ))}
         </Dropdown.Menu>
@@ -96,35 +151,42 @@ export default function AdminManageUsers() {
   );
 
   if (loading) {
-    return <div className="p-6 text-center text-lg">Loading users...</div>;
+    return (
+      <div className="p-6 text-center text-lg">
+        Loading users...
+      </div>
+    );
   }
 
   return (
     <div className="p-4 md:p-6">
-      <h2 className="text-lg md:text-xl font-semibold mb-4">Manage Users</h2>
+      <h2 className="mb-4 text-lg font-semibold md:text-xl">
+        Manage Users
+      </h2>
 
-      {/* ✅ MOBILE VIEW (CARD) */}
+      {/* Mobile View */}
       <div className="grid gap-4 md:hidden">
         {users.map((user) => (
           <div
             key={user._id}
-            className="border rounded-xl p-4 shadow-sm bg-white"
+            className="rounded-xl border bg-white p-4 shadow-sm"
           >
-            <h3 className="font-semibold text-base">
+            <h3 className="text-base font-semibold">
               {user.name || "No Name"}
             </h3>
 
-            <p className="text-sm text-gray-500">{user.email}</p>
+            <p className="text-sm text-gray-500">
+              {user.email}
+            </p>
 
-            <div className="mt-2 ">
-              <Chip color={getRoleColor(user.role)}>
-                {user.role || "user"}
-              </Chip>
+            <div className="mt-2">
+             <Chip color={getRoleColor(user.role)}>
+  {user.role}
+</Chip>
             </div>
 
-            {/* Actions */}
-            <div className="flex flex-col gap-2 mt-3 ">
-              <RoleDropdown  user={user} />
+            <div className="mt-3 flex flex-col gap-2">
+              <RoleDropdown user={user} />
 
               <Button
                 className="bg-red-500 text-white"
@@ -138,12 +200,15 @@ export default function AdminManageUsers() {
         ))}
       </div>
 
-      {/* ✅ DESKTOP TABLE */}
+      {/* Desktop View */}
       <div className="hidden md:block">
         <div className="w-full overflow-x-auto">
           <Table>
             <Table.ScrollContainer>
-              <Table.Content aria-label="Users" className="min-w-[700px]">
+              <Table.Content
+                aria-label="Users"
+                className="min-w-[800px]"
+              >
                 <Table.Header>
                   <Table.Column>Name</Table.Column>
                   <Table.Column>Email</Table.Column>
@@ -154,7 +219,9 @@ export default function AdminManageUsers() {
                 <Table.Body>
                   {users.map((user) => (
                     <Table.Row key={user._id} id={user._id}>
-                      <Table.Cell>{user.name || "No Name"}</Table.Cell>
+                      <Table.Cell>
+                        {user.name || "No Name"}
+                      </Table.Cell>
 
                       <Table.Cell className="break-all">
                         {user.email}
@@ -162,7 +229,7 @@ export default function AdminManageUsers() {
 
                       <Table.Cell>
                         <Chip color={getRoleColor(user.role)}>
-                          {user.role || "user"}
+                          {user.role}
                         </Chip>
                       </Table.Cell>
 

@@ -67,7 +67,7 @@ export default function ManageProperties() {
           >
             <td className="px-6 py-4">
               <Image
-                src={property.image}
+                src={property?.image}
                 alt={property.title}
                 width={70}
                 height={50}
@@ -90,7 +90,7 @@ export default function ManageProperties() {
             <td className="px-6 py-4">
               <div className="flex justify-center gap-2">
 
-                <Link href={`/dashboard/properties/${property._id}`}>
+                <Link  href={`/House`}>
                   <Button
                    className="rounded-md"
                   >
@@ -152,7 +152,7 @@ export default function ManageProperties() {
         <div className="flex gap-2 mt-4">
 
           <Link
-            href={`/dashboard/properties/${property._id}`}
+            href={`/House`}
             className="flex-1"
           >
             <Button

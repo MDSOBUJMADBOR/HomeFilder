@@ -23,6 +23,7 @@ import { LiaFacebookF } from "react-icons/lia";
 import { redirect } from "next/navigation";
 import { router } from "better-auth/api";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 interface SignInFormData {
   email: string;
@@ -82,7 +83,7 @@ const onSubmit = async (
       callbackURL: "/",
     });
 
-    alert("Sign-in successful");
+    toast.success("Sign-in successful");
   } catch (error) {
     console.error(error);
     alert("Sign-in failed");

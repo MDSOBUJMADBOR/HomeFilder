@@ -3,6 +3,7 @@
 import React from "react";
 import { authClient } from "@/lib/auth-client";
 import {  useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 interface PropertyData {
   title: string;
@@ -17,6 +18,10 @@ interface PropertyData {
   email?: string;
   userName?: string;
   role: string;
+  rating:string;
+  beds: string;
+  baths:string;
+  area:string;
 }
 
 const UserAddProperty = () => {
@@ -42,6 +47,10 @@ const router = useRouter();
 
       status: "unpublished",
       createdAt: new Date(),
+      rating: "4.9",
+      beds: "3",
+      baths: "2",
+      area: "2100",
 
       email: user?.email,
       userName: user?.name,
@@ -65,7 +74,7 @@ const router = useRouter();
       const data = await res.json();
 
       if (data.acknowledged) {
-        alert("Property added successfully ✅");
+        toast.success("Property added successfully ✅");
         form.reset();
           router.push("/dashboard/user/myproperties");
       } else {

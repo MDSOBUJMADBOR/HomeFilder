@@ -97,7 +97,8 @@ const handleGoogleSignin = async () => {
       callbackURL: "/",
     });
   } catch (error) {
-    console.error(error);
+    console.error(error);  
+
   }
 };
 const handleFacebookSignin = async () => {
@@ -110,6 +111,8 @@ const handleFacebookSignin = async () => {
     console.error(error);
   }
 };
+
+
 
   return (
     <div className="min-h-screen  flex items-center justify-center px-4">

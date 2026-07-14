@@ -2,6 +2,7 @@
 
 import { Heart } from "lucide-react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 interface FavoriteButtonProps {
   house: any;
@@ -18,40 +19,56 @@ export default function FavoriteButton({
   const [loading, setLoading] = useState(false);
   const [favorite, setFavorite] = useState(false);
 
-  const handleFavorite = async () => {
-    try {
-      setLoading(true);
+const handleFavorite = async () => {
+  try {
+    setLoading(true);
 
-      const favoriteData = {
-        propertyId: house._id,
-        propertyTitle: house.title,
-        propertyImage: house.image,
-        propertyLocation: house.location,
-        propertyPrice: house.price,
-        propertyStatus: house.status,
+    const favoriteData = {
+      propertyId: house._id,
+      propertyTitle: house.title,
+      propertyImage: house.image,
+      propertyLocation: house.location,
+      propertyPrice: house.price,
+      propertyStatus: house.status,
 
-        ownerName: house.userName,
-        ownerEmail: house.email,
+      ownerName: house.userName,
+      ownerEmail: house.email,
 
-        customerName: user.name,
-        customerEmail: user.email,
-      };
+      customerName: user.name,
+      customerEmail: user.email,
+    };
 
-      console.log(favoriteData);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/favorites`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(favoriteData),
+      }
+    );
 
-      // Express API
-      // await axios.post(
-      //   "http://localhost:5000/api/favorites",
-      //   favoriteData
-      // );
+    const data = await res.json();
 
+    if (data.insertedId || data.success) {
       setFavorite(true);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
+
+      // যদি sonner ব্যবহার করেন
+      // toast.success("Property added to favorites.");
+
+      // যদি react-hot-toast ব্যবহার করেন
+      toast.success("Property added to favorites.");
+
+      
+      
     }
-  };
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <button

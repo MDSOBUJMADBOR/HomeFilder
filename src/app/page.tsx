@@ -5,14 +5,14 @@ import Stats from "@/components/Stats";
 
 
 
+
 export default function Home() { 
   return (
   <div>
     <Banner />
     <Features />
      <Featured />
-    <Stats />
-   
+    <Stats />   
   </div>
   );
 }

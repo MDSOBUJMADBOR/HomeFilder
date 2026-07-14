@@ -210,33 +210,6 @@ const session = await auth.api.getSession({
 
 
 
-
-
-{/* 
-      <div className=" rounded-2xl border p-6 shadow-sm">
-        <h3 className="text-2xl font-bold">
-          Property Owner
-        </h3>
-
-        <div className="mt-6 space-y-4">
-          <div>
-            <p className="text-gray-500">Name</p>
-            <p className="font-semibold">{house.userName}</p>
-          </div>
-
-          <div>
-            <p className="text-gray-500">Email</p>
-            <p className="font-semibold">{house.email}</p>
-          </div>         
-
-          <button className="mt-6 w-full rounded-xl bg-blue-600 py-3 text-white font-semibold hover:bg-blue-700">
-            Contact Owner
-          </button>
-        </div>
-      </div> */}
-
-
-
     </div>
 
   </div>

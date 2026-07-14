@@ -30,6 +30,9 @@ interface PropertyCardProps {
 }
 
 export default function PropertyCard({ book }: PropertyCardProps) {
+
+  console.log(book?._id,'book');
+
   return (
     <div className="group w-full max-w-[340px] overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       {/* Image */}
@@ -108,7 +111,7 @@ export default function PropertyCard({ book }: PropertyCardProps) {
         </div>
 
         {/* Button */}
-       <Link href={`/House/${book._id}`}>
+       <Link href={`/House/${book._id}`}>        
         <button className="w-full cursor-pointer rounded-lg bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700">
           View Details
         </button>

@@ -17,7 +17,7 @@ const FeaturedBooks = async () => {
       </div>
 
       <div className="flex items-center justify-center pt-2">
-        <Link href="/houses">
+        <Link href="/House">
           <Button variant="outline">View All</Button>
         </Link>
       </div>

@@ -92,8 +92,18 @@ const onSubmit = async (
 };
 const handleGoogleSignin = async () => {
   try {
-    await authClient.signIn.social({
+    await authClient.signIn.social({      
       provider: "google",
+      callbackURL: "/",
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+const handleFacebookSignin = async () => {
+  try {
+    await authClient.signIn.social({      
+      provider: "facebook",
       callbackURL: "/",
     });
   } catch (error) {
@@ -220,7 +230,7 @@ const handleGoogleSignin = async () => {
             Sign up with Google
           </Button>
     <Button
-            onPress={handleGoogleSignin}
+            onPress={handleFacebookSignin}
             variant="outline"
             className="w-full rounded-lg"
           >            

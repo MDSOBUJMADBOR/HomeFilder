@@ -28,7 +28,7 @@ export default function ManageProperties() {
     const getProperties = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/housepost/email/${user.email}`
+          `${process.env.NEXT_PUBLIC_API_URL}/housepost/email/${user.email}`
         );
 
         const data = await res.json();

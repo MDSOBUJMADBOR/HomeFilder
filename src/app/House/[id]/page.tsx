@@ -23,11 +23,7 @@ const HousesDetailsPage = async ({ params }: PageProps) => {
   const { id } = await params;
   const house = await HouseSingleData(id);
 
-
-
-
-
-
+  
   return (
   <div className="max-w-7xl mx-auto px-4 py-10">
 

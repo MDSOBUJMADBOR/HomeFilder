@@ -58,25 +58,26 @@ export default function AdminOverviewPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen text-xl font-semibold">
-        Loading...
+      <div className="flex h-screen items-center justify-center bg-gray-100">
+        <p className="text-lg sm:text-xl font-semibold">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen py-10">
-      <div className="max-w-7xl mx-auto px-5">
-        <h2 className="text-4xl font-bold mb-10">
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
+      <div className="mx-auto max-w-7xl">
+        <h2 className="mb-6 text-2xl font-bold sm:text-3xl lg:text-4xl">
           Admin Analytics
         </h2>
 
-        <div className="bg-white rounded-xl shadow-md p-6">
-          <h3 className="text-2xl font-semibold mb-6">
+        <div className="rounded-2xl bg-white p-4 shadow-md sm:p-6 lg:p-8">
+          <h3 className="mb-6 text-center text-xl font-semibold sm:text-2xl">
             Houses vs Users
           </h3>
 
-          <div className="w-full h-[450px]">
+          {/* Pie Chart */}
+          <div className="h-[280px] w-full sm:h-[380px] lg:h-[500px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -85,14 +86,14 @@ export default function AdminOverviewPage() {
                   nameKey="name"
                   cx="50%"
                   cy="50%"
-                  innerRadius={80}
-                  outerRadius={140}
+                  innerRadius="40%"
+                  outerRadius="70%"
                   paddingAngle={5}
                   label={({ name, percent }) =>
                     `${name} ${(percent * 100).toFixed(0)}%`
                   }
                 >
-                  {chartData.map((entry, index) => (
+                  {chartData.map((_, index) => (
                     <Cell
                       key={index}
                       fill={COLORS[index % COLORS.length]}
@@ -101,26 +102,37 @@ export default function AdminOverviewPage() {
                 </Pie>
 
                 <Tooltip />
-                <Legend />
+
+                <Legend
+                  verticalAlign="bottom"
+                  align="center"
+                  wrapperStyle={{
+                    fontSize: "14px",
+                    paddingTop: "10px",
+                  }}
+                />
               </PieChart>
             </ResponsiveContainer>
           </div>
 
-          <div className="grid grid-cols-2 gap-5 mt-8">
-            <div className="bg-blue-50 rounded-lg p-5 text-center">
-              <h4 className="text-lg font-medium text-gray-600">
+          {/* Stats Cards */}
+          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
+            <div className="rounded-xl bg-blue-50 p-6 text-center shadow-sm">
+              <h4 className="text-base font-medium text-gray-600 sm:text-lg">
                 Total Houses
               </h4>
-              <p className="text-4xl font-bold text-blue-600 mt-2">
+
+              <p className="mt-2 text-3xl font-bold text-blue-600 sm:text-4xl lg:text-5xl">
                 {stats.houses}
               </p>
             </div>
 
-            <div className="bg-green-50 rounded-lg p-5 text-center">
-              <h4 className="text-lg font-medium text-gray-600">
+            <div className="rounded-xl bg-green-50 p-6 text-center shadow-sm">
+              <h4 className="text-base font-medium text-gray-600 sm:text-lg">
                 Total Users
               </h4>
-              <p className="text-4xl font-bold text-green-600 mt-2">
+
+              <p className="mt-2 text-3xl font-bold text-green-600 sm:text-4xl lg:text-5xl">
                 {stats.users}
               </p>
             </div>

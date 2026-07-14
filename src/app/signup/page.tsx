@@ -65,16 +65,30 @@ const onSubmit = async (
 
 
   const handleGoogleSignin = async (): Promise<void> => {
-    // try {
-    //   await authClient.signIn.social({
-    //     provider: "google",
-    //   });
+    try {
+      await authClient.signIn.social({
+        provider: "google",
+      });
 
-    //   redirect("/");
-    // } catch (error) {
-    //   console.error(error);
-    // }
+      redirect("/");
+    } catch (error) {
+      console.error(error);
+    }
   };
+  const handleFacebookSignin = async (): Promise<void> => {
+    try {
+      await authClient.signIn.social({
+        provider: "facebook",
+      });
+
+      redirect("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+
 
   return (
     <div className="min-h-screen  flex items-center justify-center px-4">
@@ -206,7 +220,7 @@ const onSubmit = async (
             Sign up with Google
           </Button>
     <Button
-            onPress={handleGoogleSignin}
+            onPress={handleFacebookSignin}
             variant="outline"
             className="w-full rounded-lg"
           >            

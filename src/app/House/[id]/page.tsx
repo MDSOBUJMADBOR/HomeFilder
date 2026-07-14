@@ -9,8 +9,8 @@ import Link from "next/link";
 import {ArrowLeft} from '@gravity-ui/icons';
 import ContactAgentButton from "@/components/property/ContactAgentButton";
 import FavoriteButton from "@/components/property/FavoriteButton";
-import { headers } from "next/headers";
-import { auth } from "@/lib/auth";
+
+
 
 
 interface PageProps {
@@ -23,9 +23,7 @@ const HousesDetailsPage = async ({ params }: PageProps) => {
   const { id } = await params;
   const house = await HouseSingleData(id);
 
-const session = await auth.api.getSession({
-  headers: await headers(),
-});
+
 
 
 
@@ -198,11 +196,7 @@ const session = await auth.api.getSession({
 <div className="mt-8 space-y-4">
   <ContactAgentButton />
   <FavoriteButton
-    house={house}
-    user={{
-        name: session.user.name,
-        email: session.user.email,
-    }}
+    house={house}    
 />
 </div>
 

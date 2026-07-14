@@ -1,25 +1,36 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Heart } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
 interface FavoriteButtonProps {
   house: any;
-  user: {
-    name: string;
-    email: string;
-  };
+ 
 }
 
 export default function FavoriteButton({
   house,
-  user,
+  
 }: FavoriteButtonProps) {
   const [loading, setLoading] = useState(false);
   const [favorite, setFavorite] = useState(false);
 
+   const router = useRouter()
+  const { data: session } =
+    authClient.useSession();
+
+    
+
 const handleFavorite = async () => {
+ if (!session?.user) {
+    toast("Please login first to request delivery.");
+    router.push("/signin");
+    return;
+  }
+
   try {
     setLoading(true);
 
@@ -34,8 +45,8 @@ const handleFavorite = async () => {
       ownerName: house.userName,
       ownerEmail: house.email,
 
-      customerName: user.name,
-      customerEmail: user.email,
+      customerName: session.user.name,
+      customerEmail: session.user.email,
     };
 
     const res = await fetch(

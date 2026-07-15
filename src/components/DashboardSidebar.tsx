@@ -19,9 +19,11 @@ import { FaSignOutAlt } from "react-icons/fa";
 
 export default function DashboardSidebar() {
   const { data: session } = useSession();
+const role = (session?.user as any)?.role;;
+
   const pathname = usePathname();
 
-  const role = session?.user?.role;
+ 
 
   // 🔥 Role-based menu
   const menus = {
@@ -76,7 +78,7 @@ export default function DashboardSidebar() {
     ],
   };
 
-  const navItems = menus[role] || [];
+const navItems = menus[role as keyof typeof menus] || [];
 
   const handleLogout =async () => {
    await authClient.signOut();

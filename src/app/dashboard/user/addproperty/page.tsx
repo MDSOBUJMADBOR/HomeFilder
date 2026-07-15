@@ -54,7 +54,7 @@ const router = useRouter();
 
       email: user?.email,
       userName: user?.name,
-      role: user?.role || "user",
+      role: "user",
     };
 
     console.log(propertyData);

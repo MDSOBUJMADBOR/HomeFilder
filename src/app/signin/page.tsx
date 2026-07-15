@@ -1,6 +1,5 @@
 "use client";
 
-// import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -20,8 +19,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { LiaFacebookF } from "react-icons/lia";
-import { redirect } from "next/navigation";
-import { router } from "better-auth/api";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 
@@ -35,31 +32,6 @@ interface SignInFormData {
 export default function SignInPage() {
   const [loading, setLoading] = useState<boolean>(false);
 
-
-// const onSubmit = async (
-//   e: React.FormEvent<HTMLFormElement>
-// ): Promise<void> => {
-//   e.preventDefault();
-//   setLoading(true);
-
-//   try {
-//     const formData = new FormData(e.currentTarget);
-
-//     const user: SignInFormData = {
-//       email: formData.get("email") as string,
-//       password: formData.get("password") as string,
-//     };
-
-//     await authClient.signIn.email(user);
-
-//     callbackURL: "/"
-//   } catch (error) {
-//     console.error(error);
-//     alert("Sign-in failed");
-//   } finally {
-//     setLoading(false);
-//   }
-// };
 
 
 

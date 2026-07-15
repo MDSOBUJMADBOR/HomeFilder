@@ -215,7 +215,7 @@ export default function SearchFilter({
           </h2>
 
           <p className="mt-2 text-center text-gray-500 max-w-md">
-            We couldn't find any properties
+            We could not find any properties
             matching your search or filters.
             Try changing the location,
             property type, or search keyword.
@@ -233,7 +233,7 @@ export default function SearchFilter({
           {filteredHouses.map((house) => (
             <HouseCard
               key={house._id}
-              book={house}
+              book={house as any}
             />
           ))}
         </div>

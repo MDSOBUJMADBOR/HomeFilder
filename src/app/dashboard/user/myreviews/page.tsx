@@ -118,7 +118,7 @@ export default function AddedtoFavorites() {
                       </Button>
                     </Link>
 
-                    <Button color="danger" className="rounded-md bg-red-600">
+                    <Button className="rounded-md bg-red-600">
                       Remove
                     </Button>
                   </div>
@@ -188,7 +188,7 @@ export default function AddedtoFavorites() {
               </Link>
 
               <Button
-                color="danger"
+                
                 className="flex-1 rounded-md bg-red-600"
               >
                 Remove

@@ -25,28 +25,16 @@ export const FeaturedData = async (): Promise<Property[]> => {
 };
 
 
-// export const HouseSingleData = async (
-//   id: string
-// ): Promise<Property> => {
-//   const res = await fetch(
-//     `${process.env.NEXT_PUBLIC_API_URL}/housepost/published/${id}`,
-//     {
-//       cache: "no-store",
-//     }
-//   );
-
-//   if (!res.ok) {
-//     throw new Error("Failed to fetch property details");
-//   }
-//   return await res.json();
-// };
 
 
-export const HouseSingleData = async (id) => {
-const res = await fetch( `${process.env.NEXT_PUBLIC_API_URL}/housepost/published/${id}`)
-const data = await res.json()
-return data;
-}
+
+export const HouseSingleData = async (id: string | number) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/housepost/published/${id}`
+  );
+
+  return res.json();
+};
 
 
 

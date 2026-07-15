@@ -35,8 +35,8 @@ export default function Navbar() {
   const pathname = usePathname();
 
 const { data: session } = useSession(); 
-  const role = session?.user?.role;
-// console.log(role,'role');
+const role = (session?.user as any)?.role;
+console.log(role,'role');
 
   const userData = authClient.useSession();  
 const user = userData.data?.user;  

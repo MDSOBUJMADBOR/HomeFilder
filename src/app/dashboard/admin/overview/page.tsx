@@ -89,8 +89,9 @@ export default function AdminOverviewPage() {
                   innerRadius="40%"
                   outerRadius="70%"
                   paddingAngle={5}
+                  // 🛠️ FIX: percent undefined হতে পারে তাই Optional Chaining বা Fallback 0 দেওয়া হয়েছে
                   label={({ name, percent }) =>
-                    `${name} ${(percent * 100).toFixed(0)}%`
+                    `${name} ${((percent ?? 0) * 100).toFixed(0)}%`
                   }
                 >
                   {chartData.map((_, index) => (

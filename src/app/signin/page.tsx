@@ -63,6 +63,7 @@ const onSubmit = async (
     setLoading(false);
   }
 };
+
 const handleGoogleSignin = async () => {
   try {
     await authClient.signIn.social({      
@@ -74,6 +75,7 @@ const handleGoogleSignin = async () => {
 
   }
 };
+
 const handleFacebookSignin = async () => {
   try {
     await authClient.signIn.social({      

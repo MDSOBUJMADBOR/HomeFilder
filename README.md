@@ -39,6 +39,7 @@ The platform offers verified property listings, secure authentication, property 
 
 ---
 
+
 # ✨ Features
 
 ## 🏠 Public Features

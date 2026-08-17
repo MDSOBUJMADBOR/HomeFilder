@@ -72,6 +72,7 @@ The platform offers verified property listings, secure authentication, property 
 
 ---
 
+
 ## ❤️ Property Features
 
 - View Property Details

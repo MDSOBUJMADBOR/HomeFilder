@@ -45,6 +45,7 @@ The platform offers verified property listings, secure authentication, property 
 
 ## 🏠 Public Features
 
+
 - Beautiful Responsive Homepage
 - Browse Properties
 - Property Details Page

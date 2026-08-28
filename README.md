@@ -38,9 +38,6 @@
 The platform offers verified property listings, secure authentication, property management, agent communication, favorites, dashboards, blogging, and a seamless property browsing experience.
 
 ---
-
-
-
 # ✨ Features
 
 ## 🏠 Public Features

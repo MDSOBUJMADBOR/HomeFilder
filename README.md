@@ -4,9 +4,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" />
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" />
- 
- 
-
 </p>
 
 
@@ -57,6 +54,7 @@ The platform offers verified property listings, secure authentication, property 
 - Contact Page
 - Responsive Navigation
 - Footer with Social Links
+- privary
 
 ---
 

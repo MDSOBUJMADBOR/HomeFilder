@@ -54,7 +54,7 @@ The platform offers verified property listings, secure authentication, property 
 - Contact Page
 - Responsive Navigation
 - Footer with Social Links
-- privary
+- privary policy
 
 ---
 
@@ -104,7 +104,7 @@ The platform offers verified property listings, secure authentication, property 
 - My Properties
 - Favorites Count
 - Property Statistics
-- Visual Charts
+
 
 ---
 

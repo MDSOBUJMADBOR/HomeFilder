@@ -1,4 +1,12 @@
-import { CalendarDays, User, ArrowRight } from "lucide-react";
+
+import {
+  ArrowRight,
+  CalendarDays,
+  User,
+  Sparkles,
+  BookOpen,
+  TrendingUp,
+} from "lucide-react";
 import Link from "next/link";
 
 const blogs = [
@@ -60,69 +68,209 @@ const blogs = [
 
 export default function BlogPage() {
   return (
-    <main className="bg-gray-50">
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 py-20 text-white">
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <h1 className="text-4xl font-bold md:text-5xl">
-            Our Blog
+    <main className="overflow-hidden bg-white">
+      {/* =====================================================
+          HERO
+      ====================================================== */}
+      <section className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
+        {/* Background decorations */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-40 top-0 h-96 w-96 rounded-full bg-blue-50 blur-3xl" />
+
+          <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-cyan-50 blur-3xl" />
+
+          <div
+            className="absolute inset-0 opacity-[0.28]"
+            style={{
+              backgroundImage:
+                "linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px)",
+              backgroundSize: "65px 65px",
+              maskImage:
+                "linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)",
+            }}
+          />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-8">
+          {/* Badge */}
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-600">
+            <Sparkles className="h-4 w-4" />
+            HomeFinder Journal
+          </div>
+
+          {/* Heading */}
+          <h1 className="mx-auto max-w-4xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+            Insights for Your
+            <span className="block bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
+              Property Journey
+            </span>
           </h1>
 
-          <p className="mx-auto mt-5 max-w-3xl text-lg text-blue-100">
-            Stay updated with the latest real estate news, buying guides,
-            rental tips, and property investment insights.
+          {/* Description */}
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-500 sm:text-lg">
+            Explore expert advice, real estate trends, buying guides, rental
+            tips, and practical insights to help you make smarter property
+            decisions.
           </p>
+
+          {/* Trust stats */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-500 shadow-sm">
+              <BookOpen className="h-4 w-4 text-blue-600" />
+              Expert Guides
+            </div>
+
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-500 shadow-sm">
+              <TrendingUp className="h-4 w-4 text-cyan-600" />
+              Market Insights
+            </div>
+
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-500 shadow-sm">
+              <Sparkles className="h-4 w-4 text-blue-600" />
+              Property Tips
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Blogs */}
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {blogs.map((blog) => (
-            <article
-              key={blog.id}
-              className="rounded-2xl bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
-            >
-              {/* Placeholder Image */}
-              <div className="flex h-52 items-center justify-center rounded-t-2xl bg-gradient-to-r from-blue-100 to-indigo-100">
-                <span className="text-lg font-semibold text-blue-700">
-                  {blog.category}
-                </span>
+      {/* =====================================================
+          BLOG SECTION
+      ====================================================== */}
+      <section className="relative overflow-hidden bg-slate-50/60 py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-8">
+          {/* Section heading */}
+          <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <div>
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 shadow-sm">
+                <BookOpen className="h-3.5 w-3.5" />
+                Latest Articles
               </div>
 
-              <div className="p-6">
-                <div className="mb-4 flex items-center gap-4 text-sm text-gray-500">
-                  <span className="flex items-center gap-1">
-                    <CalendarDays size={16} />
-                    {blog.date}
-                  </span>
+              <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                From the HomeFinder
+                <span className="ml-2 bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                  Blog
+                </span>
+              </h2>
 
-                  <span className="flex items-center gap-1">
-                    <User size={16} />
-                    {blog.author}
-                  </span>
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">
+                Helpful knowledge and practical advice for buyers, renters,
+                sellers, and property investors.
+              </p>
+            </div>
+
+            <div className="hidden rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-500 shadow-sm sm:block">
+              {blogs.length} Articles
+            </div>
+          </div>
+
+          {/* Blog grid */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {blogs.map((blog) => (
+              <article
+                key={blog.id}
+                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-100/40"
+              >
+                {/* Top accent */}
+                <div className="h-1 w-full bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+
+                {/* Image / Category area */}
+                <div className="relative flex h-52 items-end overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-cyan-50 p-6">
+                  {/* Decorative circles */}
+                  <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full border-[18px] border-white/40" />
+
+                  <div className="absolute -bottom-14 -left-10 h-36 w-36 rounded-full bg-blue-200/30 blur-2xl" />
+
+                  <div className="relative z-10">
+                    <span className="inline-flex items-center rounded-full border border-blue-200 bg-white/80 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 shadow-sm backdrop-blur">
+                      {blog.category}
+                    </span>
+
+                    <div className="mt-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-blue-600 shadow-md">
+                      <BookOpen className="h-5 w-5" />
+                    </div>
+                  </div>
+
+                  {/* Article number */}
+                  <div className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-xl bg-white/80 text-xs font-extrabold text-slate-500 shadow-sm backdrop-blur">
+                    0{blog.id}
+                  </div>
                 </div>
 
-                <h2 className="text-xl font-bold text-gray-900">
-                  {blog.title}
-                </h2>
+                {/* Content */}
+                <div className="p-6">
+                  {/* Meta */}
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-slate-400">
+                    <span className="flex items-center gap-1.5">
+                      <CalendarDays className="h-3.5 w-3.5 text-blue-500" />
+                      {blog.date}
+                    </span>
 
-                <p className="mt-3 text-gray-600">
-                  {blog.description}
-                </p>
+                    <span className="flex items-center gap-1.5">
+                      <User className="h-3.5 w-3.5 text-cyan-500" />
+                      {blog.author}
+                    </span>
+                  </div>
 
-                <Link
-                  href={`/blog/${blog.id}`}
-                  className="mt-6 inline-flex items-center gap-2 font-semibold text-blue-600 transition hover:text-blue-700"
-                >
-                  Read More
-                  <ArrowRight size={18} />
-                </Link>
+                  {/* Title */}
+                  <h2 className="mt-4 line-clamp-2 text-xl font-extrabold leading-7 text-slate-900 transition-colors duration-300 group-hover:text-blue-600">
+                    {blog.title}
+                  </h2>
+
+                  {/* Description */}
+                  <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-500">
+                    {blog.description}
+                  </p>
+
+                  {/* Read more */}
+                  <Link
+                    href={`/blog/${blog.id}`}
+                    className="group/link mt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-600 transition-colors hover:text-blue-700"
+                  >
+                    Read Article
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+          CTA
+      ====================================================== */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+          <div className="relative overflow-hidden rounded-[2rem] border border-blue-100 bg-gradient-to-r from-blue-50 to-cyan-50 p-8 text-center sm:p-10">
+            <div className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-blue-200/30 blur-3xl" />
+
+            <div className="relative">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-blue-600 shadow-sm">
+                <TrendingUp className="h-5 w-5" />
               </div>
-            </article>
-          ))}
+
+              <h2 className="mt-5 text-2xl font-extrabold text-slate-900 sm:text-3xl">
+                Ready to Find Your Next Property?
+              </h2>
+
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-500">
+                Turn what you&apos;ve learned into action. Explore available
+                properties and find a place that fits your needs.
+              </p>
+
+              <Link
+                href="/House"
+                className="group mt-6 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl"
+              >
+                Browse Properties
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </main>
   );
 }
+

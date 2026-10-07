@@ -1,14 +1,37 @@
-# 🏡 HomeFinder – Modern Real Estate Platform
 
+# 🏡 HomeFinder — Modern Real Estate Platform
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" />
-  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" />
+  <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-4-000000?style=for-the-badge&logo=express&logoColor=white" />
+  <img src="https://img.shields.io/badge/MongoDB-8-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/Better_Auth-Authentication-6366F1?style=for-the-badge" />
+</p>
 
 <p align="center">
-  <strong>A Modern Full Stack Real Estate Platform built with Next.js, TypeScript, Express.js ,node.js and MongoDB.</strong>
+  <strong>
+    A modern full-stack real estate platform for discovering, managing,
+    and exploring properties with a clean, responsive, and user-friendly experience.
+  </strong>
+</p>
+
+<p align="center">
+  <a href="https://home-filder.vercel.app">
+    <img src="https://img.shields.io/badge/Live_Demo-Visit_Website-2563EB?style=for-the-badge" />
+  </a>
+  <a href="https://github.com/MDSOBUJMADBOR/HomeFilder">
+    <img src="https://img.shields.io/badge/Client-GitHub-181717?style=for-the-badge&logo=github" />
+  </a>
+  <a href="https://github.com/MDSOBUJMADBOR/HomeFilder-Server">
+    <img src="https://img.shields.io/badge/Server-GitHub-181717?style=for-the-badge&logo=github" />
+  </a>
 </p>
 
 ---
@@ -17,215 +40,279 @@
 
 ### 🚀 Live Website
 
-👉 https://home-filder.vercel.app
+**HomeFinder**
 
-### 💻 Client Repository
+https://home-filder.vercel.app
 
-👉 https://github.com/MDSOBUJMADBOR/HomeFilder
+### 💻 Frontend Repository
 
-### ⚙️ Server Repository
+https://github.com/MDSOBUJMADBOR/HomeFilder
 
-👉 https://github.com/MDSOBUJMADBOR/HomeFilder-Server
+### ⚙️ Backend Repository
+
+https://github.com/MDSOBUJMADBOR/HomeFilder-Server
 
 ---
 
 # 📖 About The Project
 
-**HomeFinder** is a modern Full Stack Real Estate web application where users can discover, buy, rent, and manage properties with a clean and responsive interface.
+**HomeFinder** is a modern full-stack real estate platform designed to make property discovery simple, efficient, and convenient.
 
-The platform offers verified property listings, secure authentication, property management, agent communication, favorites, dashboards, blogging, and a seamless property browsing experience.
+Users can browse properties, search and filter listings, view detailed property information, save favorite properties, communicate with agents, and manage their own property listings through a personalized dashboard.
+
+The application focuses on:
+
+- Clean and modern UI
+- Responsive design
+- Secure authentication
+- Property management
+- Search and filtering
+- User dashboards
+- Real estate content
+- Scalable full-stack architecture
 
 ---
-# ✨ Features
+
+# ✨ Key Features
 
 ## 🏠 Public Features
 
-
-- Beautiful Responsive Homepage
-- Browse Properties
-- Property Details Page
-- Search Properties
-- Filter by Category
-- Filter by Location
-- Sorting Options
-- Featured Properties
-- About Page
-- Blog Page
-- Contact Page
-- Responsive Navigation
-- Footer with Social Links
-- privary policy
+- Responsive modern homepage
+- Browse all properties
+- Property search
+- Category filtering
+- Location filtering
+- Sorting options
+- Featured properties
+- Property details
+- Property gallery
+- Property status
+- About page
+- Blog system
+- Contact page
+- Privacy policy
+- Responsive navigation
+- Responsive footer
+- Social media integration
 
 ---
 
 ## 🔐 Authentication
 
-- Email & Password Login
-- Register New Account
-- Better Auth Authentication
-- Protected Routes
-- Persistent Login
-- Logout System
+HomeFinder provides a secure authentication system powered by Better Auth.
+
+### Authentication Features
+
+- Email & password registration
+- Email & password login
+- Persistent authentication
+- Protected routes
+- Session management
+- Logout functionality
+- Role-based dashboard access
 
 ---
 
+## 🏡 Property Management
 
-## ❤️ Property Features
+Users can explore detailed information about properties.
 
-- View Property Details
-- Add to Favorites
-- Contact Agent
-- Call Agent
-- Live Chat UI
-- Property Overview
-- Specifications
-- Reviews
-- Property Information
-- Gallery
-- Property Status
+### Property Features
+
+- Property overview
+- Property specifications
+- Property gallery
+- Property location
+- Property status
+- Property reviews
+- Agent information
+- Contact agent
+- Call agent
+- Live chat UI
+- Add to favorites
+- Remove from favorites
 
 ---
 
 ## 👤 User Dashboard
 
-- Dashboard Overview
-- Analytics
-- Add New Property
-- My Properties
-- My Reviews
+Authenticated users get access to a personalized dashboard.
+
+### Dashboard Features
+
+- Dashboard overview
+- Property statistics
+- Add new property
+- My properties
+- Manage listings
 - Favorites
-- Manage Listings
+- My reviews
+- Property analytics
 
 ---
 
 ## 📊 Dashboard Analytics
 
-- Total Properties
-- My Properties
-- Favorites Count
-- Property Statistics
+The dashboard provides useful property-related statistics.
 
+- Total properties
+- User properties
+- Favorite properties
+- Property statistics
+- Listing management overview
 
 ---
 
 ## 📝 Blog System
 
-- Real Estate Blogs
+HomeFinder includes a real-estate-focused blog system.
+
+### Blog Categories
+
 - Buying Guides
 - Rental Tips
 - Market News
 - Investment Articles
-- Home Maintenance Guides
+- Home Maintenance
+- Property Advice
+
+Users can browse articles and open individual blog details pages.
 
 ---
 
-## 📞 Contact
+## 📞 Contact System
 
-- Contact Form
-- Office Information
-- Email
-- Phone
-- Office Hours
+The platform includes a dedicated contact experience.
+
+### Contact Features
+
+- Contact form
+- Email information
+- Phone information
+- Office address
+- Office hours
+- Form validation
+- Success/error notifications
 
 ---
 
-# 🖥️ Tech Stack
+# 🛠️ Technology Stack
 
 ## Frontend
 
-- Next.js 16
-- React 19
-- TypeScript
-- Tailwind CSS v4
-- HeroUI
-- React Hook Form
-- React Icons
-- Lucide React
-- Recharts
+| Technology | Purpose |
+|---|---|
+| Next.js 16 | React framework |
+| React 19 | UI development |
+| TypeScript | Type safety |
+| Tailwind CSS v4 | Styling |
+| HeroUI | UI components |
+| Better Auth | Authentication |
+| React Hook Form | Form management |
+| Lucide React | Icons |
+| React Icons | Icons |
+| Recharts | Data visualization |
 
 ---
 
 ## Backend
 
-- Node.js
-- Express.js
-- TypeScript
-- MongoDB
-- Mongoose
-- Better Auth
-- CORS
-- dotenv
+| Technology | Purpose |
+|---|---|
+| Node.js | Runtime environment |
+| Express.js | Backend framework |
+| TypeScript | Type safety |
+| MongoDB | Database |
+| Mongoose | MongoDB ODM |
+| Better Auth | Authentication |
+| CORS | Cross-origin requests |
+| dotenv | Environment configuration |
 
 ---
 
-# 📦 Client Dependencies
+# 🏗️ Project Architecture
 
-```json
-Next.js 16
-React 19
-TypeScript
-Tailwind CSS v4
-HeroUI
-Better Auth
-MongoDB
-React Hook Form
-Lucide React
-React Icons
-Recharts
-```
+```text
+                    ┌─────────────────────┐
+                    │     HomeFinder      │
+                    │    Web Platform     │
+                    └──────────┬──────────┘
+                               │
+                ┌──────────────┴──────────────┐
+                │                             │
+        ┌───────▼────────┐           ┌────────▼────────┐
+        │    Frontend    │           │     Backend     │
+        │    Next.js     │◄─────────►│    Express.js   │
+        │    React       │   API     │    Node.js      │
+        └───────┬────────┘           └────────┬────────┘
+                │                             │
+                │                             │
+                │                      ┌──────▼──────┐
+                │                      │   MongoDB   │
+                │                      │  Database   │
+                │                      └─────────────┘
+                │
+        ┌───────▼────────┐
+        │  Better Auth   │
+        │ Authentication │
+        └────────────────┘
+````
 
 ---
 
-# 📦 Server Dependencies
+# 📁 Project Structure
 
-```json
-Express.js
-MongoDB
-Mongoose
-TypeScript
-dotenv
-cors
-```
+## Frontend
 
----
-
-# 📁 Folder Structure
-
-```
-HomeFinder
+```text
+HomeFilder/
 │
-├── client
-│   ├── app
-│   ├── components
-│   ├── hooks
-│   ├── lib
-│   ├── providers
-│   ├── types
-│   └── public
+├── app/
+├── components/
+├── hooks/
+├── lib/
+├── providers/
+├── types/
+├── public/
 │
-├── server
-│   ├── src
-│   │   ├── controllers
-│   │   ├── routes
-│   │   ├── models
-│   │   ├── middleware
-│   │   ├── config
-│   │   └── server.ts
-│   │
-│   └── package.json
+├── .env.local
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
+## Backend
+
+```text
+HomeFilder-Server/
+│
+├── src/
+│   ├── controllers/
+│   ├── routes/
+│   ├── models/
+│   ├── middleware/
+│   ├── config/
+│   └── server.ts
+│
+├── .env
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
 ---
 
-# 🚀 Installation
+# 🚀 Getting Started
 
-## Clone Client
+Follow the steps below to run HomeFinder locally.
+
+## 1. Clone the Frontend
 
 ```bash
 git clone https://github.com/MDSOBUJMADBOR/HomeFilder.git
 ```
 
-## Clone Server
+## 2. Clone the Backend
 
 ```bash
 git clone https://github.com/MDSOBUJMADBOR/HomeFilder-Server.git
@@ -233,21 +320,19 @@ git clone https://github.com/MDSOBUJMADBOR/HomeFilder-Server.git
 
 ---
 
-# 📥 Install Packages
+# 📦 Installation
 
-## Client
+## Frontend
 
 ```bash
 cd HomeFilder
-
 npm install
 ```
 
-## Server
+## Backend
 
 ```bash
 cd HomeFilder-Server
-
 npm install
 ```
 
@@ -255,7 +340,9 @@ npm install
 
 # ⚙️ Environment Variables
 
-## Client (.env.local)
+Create a `.env.local` file inside the frontend project.
+
+## Frontend `.env.local`
 
 ```env
 NEXT_PUBLIC_API_URL=YOUR_API_URL
@@ -263,9 +350,9 @@ NEXT_PUBLIC_API_URL=YOUR_API_URL
 NEXT_PUBLIC_AUTH_URL=YOUR_AUTH_URL
 ```
 
----
+Create a `.env` file inside the backend project.
 
-## Server (.env)
+## Backend `.env`
 
 ```env
 PORT=5000
@@ -279,75 +366,176 @@ BETTER_AUTH_SECRET=YOUR_SECRET
 BETTER_AUTH_URL=YOUR_SERVER_URL
 ```
 
+> ⚠️ Never commit `.env` or `.env.local` files to GitHub.
+
 ---
 
-# ▶️ Run Project
+# ▶️ Run the Application
 
-## Client
+## Start Frontend
 
 ```bash
+cd HomeFilder
 npm run dev
 ```
 
+Frontend will run on:
+
+```text
+http://localhost:3000
+```
+
 ---
 
-## Server
+## Start Backend
 
 ```bash
+cd HomeFilder-Server
 npm run dev
 ```
 
----
+Backend will run on:
 
-# 🛠 Build
-
-Client
-
-```bash
-npm run build
-```
-
-Server
-
-```bash
-npm run build
+```text
+http://localhost:5000
 ```
 
 ---
 
-# 📸 Application Pages
+# 🏗️ Production Build
 
-- 🏠 Home
-- 🔍 Explore Properties
-- 🏡 Property Details
-- ❤️ Favorites
-- 📞 Contact Agent
-- 💬 Chat Agent
-- 👤 Login
-- 📝 Register
-- 📖 About
-- 📰 Blog
-- 📞 Contact
-- 📊 Dashboard
-- ➕ Add Property
-- 🏘 My Properties
-- ⭐ My Reviews
+## Frontend
+
+```bash
+npm run build
+npm start
+```
+
+## Backend
+
+```bash
+npm run build
+npm start
+```
+
+---
+
+# 📱 Application Pages
+
+| Page                | Description                     |
+| ------------------- | ------------------------------- |
+| 🏠 Home             | Modern real estate landing page |
+| 🔍 Explore          | Browse available properties     |
+| 🏡 Property Details | Detailed property information   |
+| ❤️ Favorites        | Saved properties                |
+| 📞 Contact Agent    | Agent communication             |
+| 💬 Chat             | Chat interface                  |
+| 🔐 Login            | User authentication             |
+| 📝 Register         | Create new account              |
+| 📖 About            | About HomeFinder                |
+| 📰 Blog             | Real estate articles            |
+| 📄 Blog Details     | Individual article              |
+| 📞 Contact          | Contact HomeFinder              |
+| 📊 Dashboard        | User dashboard                  |
+| ➕ Add Property      | Create property listing         |
+| 🏘️ My Properties   | Manage listings                 |
+| ⭐ My Reviews        | Manage reviews                  |
+
+---
+
+# 🔎 Core User Flow
+
+```text
+Visit HomeFinder
+       │
+       ▼
+Explore Properties
+       │
+       ▼
+Search / Filter
+       │
+       ▼
+View Property Details
+       │
+       ├───────────────┐
+       │               │
+       ▼               ▼
+ Add Favorite     Contact Agent
+       │               │
+       └───────┬───────┘
+               ▼
+         User Dashboard
+               │
+               ▼
+      Manage Properties
+```
 
 ---
 
 # 🎯 Future Improvements
 
-- Payment Integration
-- Property Booking
-- Google Maps
-- Advanced Search
-- Property Comparison
-- Notifications
-- Dark Mode
-- Admin Dashboard
-- Image Upload
-- Reviews & Ratings
-- Property Approval System
+The following features are planned for future versions:
+
+* 💳 Payment integration
+* 📅 Property booking system
+* 🗺️ Google Maps integration
+* 🔎 Advanced property search
+* ⚖️ Property comparison
+* 🔔 Real-time notifications
+* 🌙 Dark mode
+* 🛡️ Admin dashboard
+* 📸 Cloud image upload
+* ⭐ Advanced reviews & ratings
+* ✅ Property approval system
+* 💬 Real-time messaging
+* 📈 Advanced analytics
+
+---
+
+# 🔒 Security
+
+HomeFinder follows several development best practices:
+
+* Environment variables for sensitive credentials
+* Protected authentication routes
+* Session-based authentication
+* Server-side API validation
+* CORS configuration
+* Secure database access
+* Password authentication through Better Auth
+
+---
+
+# 📈 Project Highlights
+
+### ⚡ Performance
+
+Built with **Next.js** to take advantage of modern React and server-side rendering capabilities.
+
+### 📱 Responsive Design
+
+The interface is optimized for:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
+
+### 🎨 Modern UI
+
+The application uses:
+
+* Clean layouts
+* Responsive cards
+* Subtle shadows
+* Blue/cyan visual accents
+* Modern typography
+* Smooth interactions
+* Accessible navigation
+
+### 🧩 Scalable Architecture
+
+The frontend and backend are separated into independent applications, making the project easier to maintain, test, and scale.
 
 ---
 
@@ -355,34 +543,49 @@ npm run build
 
 ## MD Sobuj Madbor
 
-**MERN Stack Developer**
+**MERN Stack Developer | Full Stack Developer**
+
+I enjoy building modern, responsive, and scalable web applications using JavaScript, TypeScript, React, Next.js, Node.js, Express.js, and MongoDB.
 
 ### Connect With Me
 
-GitHub
+<p>
+  <a href="https://github.com/MDSOBUJMADBOR">
+    <img src="https://img.shields.io/badge/GitHub-MDSOBUJMADBOR-181717?style=for-the-badge&logo=github" />
+  </a>
+  <a href="https://www.linkedin.com/in/md-sobuj-madbor/">
+    <img src="https://img.shields.io/badge/LinkedIn-MD_Sobuj_Madbor-0A66C2?style=for-the-badge&logo=linkedin" />
+  </a>
+</p>
 
-https://github.com/MDSOBUJMADBOR
+<p>
+  🌐 <strong>Portfolio:</strong>
+  <a href="https://sobuj-madbor-portflio.vercel.app">
+    sobuj-madbor-portflio.vercel.app
+  </a>
+</p>
 
-LinkedIn
-
-https://www.linkedin.com/in/md-sobuj-madbor/
-
-Portfolio
-
-https://sobuj-madbor-portflio.vercel.app
-
-Email
-
-sobujmadbor660@gmail.com
+<p>
+  📧 <strong>Email:</strong>
+  sobujmadbor660@gmail.com
+</p>
 
 ---
 
 # ⭐ Support
 
-If you like this project, don't forget to give it a ⭐ on GitHub.
+If you find **HomeFinder** useful or interesting, consider giving the repository a ⭐.
+
+Your support helps motivate continued development and improvement.
 
 ---
 
 <p align="center">
-Made with ❤️ using Next.js, TypeScript, Express.js and MongoDB
+  Built with ❤️ by <strong>MD Sobuj Madbor</strong>
 </p>
+
+<p align="center">
+  Next.js • React • TypeScript • Node.js • Express.js • MongoDB
+</p>
+
+

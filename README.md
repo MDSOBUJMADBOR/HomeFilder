@@ -93,7 +93,7 @@ The application focuses on:
 - Privacy policy
 - Responsive navigation
 - Responsive footer
-- Social media integration
+
 
 ---
 

@@ -92,7 +92,7 @@ The application focuses on:
 - Contact page
 - Privacy policy
 - Responsive navigation
-- Responsive footer
+
 
 
 ---
